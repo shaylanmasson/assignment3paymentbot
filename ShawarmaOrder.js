@@ -34,7 +34,7 @@ module.exports = class ShwarmaOrder extends Order{
                 aReturn.push("Thank you for your order of the");
                 aReturn.push(`${this.sMeal} ${this.sItem}`);
                 }else{
-                    aReturn.push("Please choose from the following meals, TURKEY, ROAST BEEF, or PULLED PORK.")
+                    aReturn.push("Please choose from the following meals, TURKEY DINNER, ROAST BEEF DINNER, or PULLED PORK ON A BUN.")
                 }
                  //calculate $ for order
                  if(this.sMeal.toLowerCase().includes("turkey dinner")){
