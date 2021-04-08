@@ -23,6 +23,7 @@ module.exports = class ShwarmaOrder extends Order{
                 aReturn.push("Turkey Dinner on May 9, 2021");
                 aReturn.push("Roast Beef Dinner on May 16, 2021");
                 aReturn.push("Pulled Pork on a Bun on May 23, 2021");
+                aReturn.push("What meal would you like to order?");
                 break;
             case OrderState.MEAL:
                 if(sInput.toLowerCase() == "turkey" ||
@@ -36,14 +37,14 @@ module.exports = class ShwarmaOrder extends Order{
                     aReturn.push("Please choose from the following meals, TURKEY, ROAST BEEF, or PULLED PORK.")
                 }
                  //calculate $ for order
-                 if(this.sType.toLowerCase().includes("turkey")){
+                 if(this.sMeal.toLowerCase().includes("turkey")){
                   {
                       this.nTotal = 18;
                   }
-                  }else if (this.sType.toLowerCase().includes("roast beef")){
+                  }else if (this.sMeal.toLowerCase().includes("roast beef")){
                   this.nTotal = 20;
                   }
-                  if(this.sSide.toLowerCase().includes("pulled pork")){
+                  if(this.sMeal.toLowerCase().includes("pulled pork")){
                           this.nTotal = 15;
                       }
                
