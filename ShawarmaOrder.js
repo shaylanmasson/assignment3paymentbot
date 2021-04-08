@@ -31,7 +31,7 @@ module.exports = class ShwarmaOrder extends Order{
                 sInput.toLowerCase() == "pulled pork"){
                 this.stateCur = OrderState.PAYMENT
                 this.sMeal = sInput;
-                aReturn.push("Thank you for your order of");
+                aReturn.push("Thank you for your order of the");
                 aReturn.push(`${this.sMeal} ${this.sItem}`);
                 }else{
                     aReturn.push("Please choose from the following meals, TURKEY, ROAST BEEF, or PULLED PORK.")
