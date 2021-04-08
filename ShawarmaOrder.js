@@ -54,6 +54,7 @@ module.exports = class ShwarmaOrder extends Order{
             case OrderState.PAYMENT:
                 console.log(sInput);
                 this.isDone(true);
+                aReturn.push("Thank you for placing an order for Popup Meals with Shaylan. We'll contact you on the date of pick up.")
                 break;
         }
         return aReturn;
