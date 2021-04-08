@@ -48,7 +48,7 @@ module.exports = class ShwarmaOrder extends Order{
                           this.nOrder = 15;
                       }
                
-                aReturn.push(`Please pay $${this.nTotal} for your order here`);
+                aReturn.push(`Please pay $${this.nOrder} for your order here`);
                 aReturn.push(`${this.sUrl}/payment/${this.sNumber}/`);
                 break;
             case OrderState.PAYMENT:
