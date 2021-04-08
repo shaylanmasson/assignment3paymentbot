@@ -26,9 +26,9 @@ module.exports = class ShwarmaOrder extends Order{
                 aReturn.push("What meal would you like to order?");
                 break;
             case OrderState.MEAL:
-                if(sInput.toLowerCase() == "turkey" ||
-                sInput.toLowerCase() == "roast beef" ||
-                sInput.toLowerCase() == "pulled pork"){
+                if(sInput.toLowerCase() == "turkey dinner" ||
+                sInput.toLowerCase() == "roast beef dinner" ||
+                sInput.toLowerCase() == "pulled pork on a bun"){
                 this.stateCur = OrderState.PAYMENT
                 this.sMeal = sInput;
                 aReturn.push("Thank you for your order of the");
@@ -37,14 +37,14 @@ module.exports = class ShwarmaOrder extends Order{
                     aReturn.push("Please choose from the following meals, TURKEY, ROAST BEEF, or PULLED PORK.")
                 }
                  //calculate $ for order
-                 if(this.sMeal.toLowerCase().includes("turkey")){
+                 if(this.sMeal.toLowerCase().includes("turkey dinner")){
                   {
                       this.nOrder = 18;
                   }
-                  }else if (this.sMeal.toLowerCase().includes("roast beef")){
+                  }else if (this.sMeal.toLowerCase().includes("roast beef dinner")){
                   this.nOrder = 20;
                   }
-                  if(this.sMeal.toLowerCase().includes("pulled pork")){
+                  if(this.sMeal.toLowerCase().includes("pulled pork on a bun")){
                           this.nOrder = 15;
                       }
                
