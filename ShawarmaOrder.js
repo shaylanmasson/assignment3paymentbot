@@ -2,9 +2,7 @@ const Order = require("./Order");
 
 const OrderState = Object.freeze({
     WELCOMING:   Symbol("welcoming"),
-    SIZE:   Symbol("size"),
-    TOPPINGS:   Symbol("toppings"),
-    DRINKS:  Symbol("drinks"),
+    MEAL:   Symbol("meal"),
     PAYMENT: Symbol("payment")
 });
 
@@ -12,49 +10,49 @@ module.exports = class ShwarmaOrder extends Order{
     constructor(sNumber, sUrl){
         super(sNumber, sUrl);
         this.stateCur = OrderState.WELCOMING;
-        this.sSize = "";
-        this.sToppings = "";
-        this.sDrinks = "";
-        this.sItem = "shawarama";
+        this.sMeal = "";
+        this.sItem = "popup meal";
     }
     handleInput(sInput){
         let aReturn = [];
         switch(this.stateCur){
             case OrderState.WELCOMING:
-                this.stateCur = OrderState.SIZE;
-                aReturn.push("Welcome to Richard's Shawarma.");
-                aReturn.push("What size would you like?");
+                this.stateCur = OrderState.MEAL;
+                aReturn.push("Welcome to Popup Meals with Shaylan.");
+                aReturn.push("Our upcoming meals include:");
+                aReturn.push("Turkey Dinner on May 9, 2021");
+                aReturn.push("Roast Beef Dinner on May 16, 2021");
+                aReturn.push("Pulled Pork on a Bun on May 23, 2021");
                 break;
-            case OrderState.SIZE:
-                this.stateCur = OrderState.TOPPINGS
-                this.sSize = sInput;
-                aReturn.push("What toppings would you like?");
-                break;
-            case OrderState.TOPPINGS:
-                this.stateCur = OrderState.DRINKS
-                this.sToppings = sInput;
-                aReturn.push("Would you like drinks with that?");
-                break;
-            case OrderState.DRINKS:
-                this.stateCur = OrderState.PAYMENT;
-                this.nOrder = 15;
-                if(sInput.toLowerCase() != "no"){
-                    this.sDrinks = sInput;
+            case OrderState.MEAL:
+                if(sInput.toLowerCase() == "turkey" ||
+                sInput.toLowerCase() == "roast beef" ||
+                sInput.toLowerCase() == "pulled pork"){
+                this.stateCur = OrderState.PAYMENT
+                this.sMeal = sInput;
+                aReturn.push("Thank you for your order of");
+                aReturn.push(`${this.sMeal} ${this.sItem}`);
+                }else{
+                    aReturn.push("Please choose from the following meals, TURKEY, ROAST BEEF, or PULLED PORK.")
                 }
-                aReturn.push("Thank-you for your order of");
-                aReturn.push(`${this.sSize} ${this.sItem} with ${this.sToppings}`);
-                if(this.sDrinks){
-                    aReturn.push(this.sDrinks);
-                }
-                aReturn.push(`Please pay for your order here`);
+                 //calculate $ for order
+                 if(this.sType.toLowerCase().includes("turkey")){
+                  {
+                      this.nTotal = 18;
+                  }
+                  }else if (this.sType.toLowerCase().includes("roast beef")){
+                  this.nTotal = 20;
+                  }
+                  if(this.sSide.toLowerCase().includes("pulled pork")){
+                          this.nTotal = 15;
+                      }
+               
+                aReturn.push(`Please pay $${this.nTotal} for your order here`);
                 aReturn.push(`${this.sUrl}/payment/${this.sNumber}/`);
                 break;
             case OrderState.PAYMENT:
                 console.log(sInput);
                 this.isDone(true);
-                let d = new Date();
-                d.setMinutes(d.getMinutes() + 20);
-                aReturn.push(`Your order will be delivered at ${d.toTimeString()}`);
                 break;
         }
         return aReturn;
