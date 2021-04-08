@@ -39,13 +39,13 @@ module.exports = class ShwarmaOrder extends Order{
                  //calculate $ for order
                  if(this.sMeal.toLowerCase().includes("turkey")){
                   {
-                      this.nTotal = 18;
+                      this.nOrder = 18;
                   }
                   }else if (this.sMeal.toLowerCase().includes("roast beef")){
-                  this.nTotal = 20;
+                  this.nOrder = 20;
                   }
                   if(this.sMeal.toLowerCase().includes("pulled pork")){
-                          this.nTotal = 15;
+                          this.nOrder = 15;
                       }
                
                 aReturn.push(`Please pay $${this.nTotal} for your order here`);
